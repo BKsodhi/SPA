@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <style>
+        /* Existing styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('https://cdn.corporatefinanceinstitute.com/assets/Industry.jpeg') no-repeat center center; 
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .table_header h1, .chart_header h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #040404;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .team-label {
+            font-weight: bold;
+            background-color: #e6e6e6;
+        }
+
+        .attendance-form {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .attendance-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="text-align:center;">Manager Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="attendance-form">
+            <h2>Mark Attendance</h2>
+            <form id="attendanceForm">
+                <div class="form-group">
+                    <label for="employeeName">Employee Name</label>
+                    <input type="text" id="employeeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="attendanceStatus">Status</label>
+                    <select id="attendanceStatus" required>
+                        <option value="present">Present</option>
+                        <option value="absent">Absent</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Attendance</button>
+            </form>
+        </div>
+
+        <div class="table_header">
+            <h1>Team Overview</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Task Completed</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="team-label">John Doe</td>
+                        <td>Yes</td>
+                        <td>Present</td>
+                    </tr>
+                    <tr>
+                        <td class="team-label">Jane Smith</td>
+                        <td>No</td>
+                        <td>Absent</td>
+                    </tr>
+                    <tr>
+                        <td class="team-label">Alice Johnson</td>
+                        <td>Yes</td>
+                        <td>Present</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const employeeName = document.getElementById('employeeName').value;
+            const attendanceStatus = document.getElementById('attendanceStatus').value;
+
+            // Here, you can add code to save this data to your database or server
+            console.log(`Attendance for ${employeeName} marked as ${attendanceStatus}`);
+            alert(`Attendance for ${employeeName} marked as ${attendanceStatus}`);
+
+            // Clear form after submission
+            document.getElementById('attendanceForm').reset();
+        });
+    </script>
+</body>
+</html>
